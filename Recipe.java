@@ -80,4 +80,42 @@ public class Recipe {
     }
 
     // Other methods specific to Recipe class
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+    }
+
+    public void removeIngredient(Ingredient ingredient) {
+        ingredients.remove(ingredient);
+    }
+
+    public void addStep(Step step) {
+        steps.add(step);
+    }
+
+    public void removeStep(Step step) {
+        steps.remove(step);
+    }
+
+    public void addTag(String tag) {
+        tags.add(tag);
+    }
+
+    public void removeTag(String tag) {
+        tags.remove(tag);
+    }
+
+    public void printRecipe() {
+        System.out.println("Name: " + name);
+        System.out.println("Ingredients:");
+        for (Ingredient ingredient : ingredients) {
+            System.out.println(ingredient);
+        }
+        System.out.println("Steps:");
+        for (Step step : steps) {
+            System.out.println(step);
+        }
+        System.out.println("Rating: " + rating);
+        System.out.println("Category: " + category);
+        System.out.println("Tags: " + tags);
+    }
 }
