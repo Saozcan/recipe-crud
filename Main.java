@@ -42,6 +42,7 @@ public class Main {
             System.out.println("Recipe not found.");
         } else {
             recipe.setRating(rating);
+            // TODO: not set add a new rating, but update the existing rating
         }
     }
 
