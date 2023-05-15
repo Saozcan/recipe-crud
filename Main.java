@@ -12,7 +12,7 @@ public class Main {
             System.out.println("3. Modify a recipe");
             System.out.println("4. Rate a recipe");
             System.out.println("0. Exit");
-            System.out.println("Your choice: ");
+            System.out.print("Your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Read the empty line
 
@@ -107,7 +107,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         RecipeBuilder builder = new RecipeBuilder();
 
-        System.out.println("Recipe name: ");
+        //--------------------Name--------------------------------
+
+        System.out.print("Recipe name: ");
         String name = scanner.nextLine();
         if (RecipeManager.getInstance().getRecipe(name) != null) {
             System.out.println("Recipe already exists.");
@@ -119,17 +121,19 @@ public class Main {
         }
         else builder.setName(name);
 
-        System.out.println("Ingredients ");
+        //--------------------Ingredients--------------------------------
+        System.out.println();
+
         List<Ingredient> ingredients = new ArrayList<>();
         while (true) {
-            System.out.println("(enter 'q' to stop): ");
+            System.out.print("Ingredients: (enter 'q' to stop): ");
             String ingredient = scanner.nextLine();
             if (ingredient.equals("q")) break;
             else if (ingredient.equals("")) {
                 System.out.println("Ingredient cannot be empty.");
                 continue;
             }
-            System.out.println("Quantity: ");
+            System.out.print("Quantity: ");
             String quantity = scanner.nextLine();
             if (quantity.equals("")) {
                 System.out.println("Quantity cannot be empty.");
@@ -140,11 +144,14 @@ public class Main {
         }
         builder.setIngredients(ingredients);
 
-        System.out.println("Steps (enter 'q' to stop): ");
+        //--------------------Steps--------------------------------
+        System.out.println();
+
+        System.out.print("Steps (enter 'q' to stop): ");
         List<Step> steps = new ArrayList<>();
         int stepNumber = 1;
         while (true) {
-            System.out.println(stepNumber + ". ");
+            System.out.print(stepNumber + ". ");
             String step = scanner.nextLine();
             if (step.equals("q")) break;
             else if (step.equals("")) {
@@ -157,10 +164,13 @@ public class Main {
         }
         builder.setSteps(steps);
 
-        System.out.println("Category: ");
+        //--------------------Category--------------------------------
+        System.out.println();
+
         System.out.println("1. Appetizers");
         System.out.println("2. Main dishes");
         System.out.println("3. Desserts");
+        System.out.print("Category: ");
         String category = scanner.nextLine();
         while (true) {
             if (category.equals("")) {
@@ -181,11 +191,14 @@ public class Main {
         else category = "Desserts";
         builder.setCategory(category);
 
+        //--------------------Tags--------------------------------
+        System.out.println();
+
         System.out.println("Tags ");
         System.out.println("1. Vegetarian \n2. Gluten-free \n3. Spicy: ");
         List<String> tags = new ArrayList<>();
         while (true) {
-            System.out.println("(enter 'q' to stop): ");
+            System.out.print("(enter 'q' to stop): ");
             String tag = scanner.nextLine();
             if (tag.equals("q")) break;
             else if (tag.equals("")) {
@@ -205,7 +218,10 @@ public class Main {
         Set<String> set = new HashSet<>(tags);
         builder.setTags(set);
 
-        System.out.println("Rating: ");
+        //--------------------Rating--------------------------------
+        System.out.println();
+
+        System.out.print("Rating: ");
         String rating = scanner.nextLine();
         while (true) {
             if (rating.equals("")) {
@@ -218,6 +234,7 @@ public class Main {
                 int ratingInt = Integer.parseInt(rating);
                 if (ratingInt < 1 || ratingInt > 5) {
                     System.out.println("Rating must be between 1 and 5.");
+                    rating = scanner.nextLine();
                 }
                 else {
                     builder.setRating(ratingInt);
@@ -226,11 +243,15 @@ public class Main {
             }
         }
 
+        //--------------------Building--------------------------------
+        System.out.println();
+
         Recipe recipe = builder.build();
         if (category.equals("Appetizers")) RecipeManager.getInstance().addAppetizer(recipe);
         else if (category.equals("Main dishes")) RecipeManager.getInstance().addMainDish(recipe);
         else RecipeManager.getInstance().addDessert(recipe);
         System.out.println("Recipe created successfully.");
+        System.out.println();
     }
 }
 
