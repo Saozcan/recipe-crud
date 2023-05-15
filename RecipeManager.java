@@ -29,4 +29,37 @@ public class RecipeManager {
     public void addDessert(Recipe recipe) {
         desserts.add(recipe);
     }
+
+    public List<Recipe> getAppetizers() {
+        return appetizers;
+    }
+
+    public List<Recipe> getMainDishes() {
+        return mainDishes;
+    }
+
+    public List<Recipe> getDesserts() {
+        return desserts;
+    }
+
+    public Recipe getRecipe(String name) {
+        for (Recipe recipe : appetizers) {
+            if (recipe.getName().equals(name)) {
+                return recipe;
+            }
+        }
+        for (Recipe recipe : mainDishes) {
+            if (recipe.getName().equals(name)) {
+                return recipe;
+            }
+        }
+        for (Recipe recipe : desserts) {
+            if (recipe.getName().equals(name)) {
+                return recipe;
+            }
+        }
+        return null;
+    }
+
+
 }
