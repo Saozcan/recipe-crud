@@ -93,14 +93,63 @@ public class Main {
     }
 
     private static void searchRecipe() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Search keyword: ");
-//        String keyword = scanner.nextLine();
-//        for (Recipe recipe : recipes) {
-//            if (recipe.getName().contains(keyword) || recipe.getRecipe().contains(keyword)) {
-//                System.out.println(recipe);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. Search by name");
+        System.out.println("2. Search by ingredient");
+        System.out.println("3. Search by category");
+        System.out.println("4. Search by tag");
+        System.out.println("Your choice: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // Read the empty line
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Recipe name: ");
+                String name = scanner.nextLine();
+                Recipe recipe = RecipeManager.getInstance().getRecipe(name);
+                if (recipe == null) {
+                    System.out.println("Recipe not found.");
+                } else {
+                    System.out.println(recipe);
+                }
+            }
+//            case 2 -> {
+//                System.out.println("Ingredient: ");
+//                String ingredient = scanner.nextLine();
+//                List<Recipe> recipes = RecipeManager.getInstance().getRecipesByIngredient(ingredient);
+//                if (recipes.isEmpty()) {
+//                    System.out.println("Recipe not found.");
+//                } else {
+//                    for (Recipe recipe : recipes) {
+//                        System.out.println(recipe);
+//                    }
+//                }
 //            }
-//        }
+//            case 3 -> {
+//                System.out.println("Category: ");
+//                String category = scanner.nextLine();
+//                List<Recipe> recipes = RecipeManager.getInstance().getRecipesByCategory(category);
+//                if (recipes.isEmpty()) {
+//                    System.out.println("Recipe not found.");
+//                } else {
+//                    for (Recipe recipe : recipes) {
+//                        System.out.println(recipe);
+//                    }
+//                }
+//            }
+//            case 4 -> {
+//                System.out.println("Tag: ");
+//                String tag = scanner.nextLine();
+//                List<Recipe> recipes = RecipeManager.getInstance().getRecipesByTag(tag);
+//                if (recipes.isEmpty()) {
+//                    System.out.println("Recipe not found.");
+//                } else {
+//                    for (Recipe recipe : recipes) {
+//                        System.out.println(recipe);
+//                    }
+//                }
+//            }
+            default -> System.out.println("Invalid choice.");
+        }
     }
 
     private static void createRecipe() {

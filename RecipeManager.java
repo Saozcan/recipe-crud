@@ -44,22 +44,20 @@ public class RecipeManager {
 
     public Recipe getRecipe(String name) {
         for (Recipe recipe : appetizers) {
-            if (recipe.getName().equals(name)) {
+            if (recipe.getName().contains(name)) {
                 return recipe;
             }
         }
         for (Recipe recipe : mainDishes) {
-            if (recipe.getName().equals(name)) {
+            if (recipe.getName().contains(name)) {
                 return recipe;
             }
         }
         for (Recipe recipe : desserts) {
-            if (recipe.getName().equals(name)) {
+            if (recipe.getName().contains(name)) {
                 return recipe;
             }
         }
         return null;
     }
-
-
 }

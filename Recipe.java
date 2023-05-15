@@ -118,4 +118,10 @@ public class Recipe {
         System.out.println("Category: " + category);
         System.out.println("Tags: " + tags);
     }
+
+    @Override
+    public String toString() {
+        printRecipe();
+        return "";
+    }
 }
