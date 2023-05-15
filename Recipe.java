@@ -1,10 +1,11 @@
+import java.util.List;
 import java.util.Set;
 
 public class Recipe {
     private String name;
     private List<Ingredient> ingredients;
     private List<Step> steps;
-    private int rating;
+    private float rating;
     private String category;
     private Set<String> tags;
     private List<RecipeObserver> observers;
